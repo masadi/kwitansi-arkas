@@ -5,7 +5,9 @@ namespace App\Listeners;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\Tahun_anggaran;
 
 class LoginSuccessful
 {
@@ -27,8 +29,11 @@ class LoginSuccessful
      */
     public function handle(Login $event)
     {
-        $semester = \App\Models\Semester::where('semester_id', $this->request->semester)->first();
-        $this->request->session()->put('semester_id', $semester->nama);
-        $this->request->session()->put('semester_aktif', $this->request->semester);
+        $tahun_anggaran = Tahun_anggaran::find($this->request->tahun_anggaran_id);
+        $this->request->session()->put('tahun_anggaran_id', $tahun_anggaran->tahun_anggaran_id);
+        $this->request->session()->put('tahun_anggaran', $tahun_anggaran->nama);
+        $user = $event->user;
+        $user->team = $tahun_anggaran->nama;
+        $user->save();
     }
 }

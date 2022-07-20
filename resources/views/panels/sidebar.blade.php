@@ -6,9 +6,6 @@ $configData = Helper::applClasses();
     <ul class="nav navbar-nav flex-row">
       <li class="nav-item me-auto">
         <a class="navbar-brand" href="{{url('/')}}">
-          <span class="brand-logo">
-            <img src="{{asset('images/logo.png')}}" alt="logo" srcset="">
-          </span>
           <h2 class="brand-text">{{config('app.name')}}</h2>
         </a>
       </li>

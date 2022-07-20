@@ -27,6 +27,6 @@ class LogSuccessfulLogout
      */
     public function handle(Logout $event)
     {
-        $this->request->session()->forget(['semester_id', 'semester_aktif']);
+        $this->request->session()->forget(['tahun_anggaran_id', 'tahun_anggaran']);
     }
 }

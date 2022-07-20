@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 use Rap2hpoutre\FastExcel\FastExcel;
 use App\Models\Program;
 use App\Models\Sub_program;
@@ -61,7 +62,7 @@ class ReferensiSeeder extends Seeder
         ]);
         $this->command->info('Tahun_anggaran injected');
         $team = Team::updateOrCreate([
-            'name' => $tahun_anggaran->tahun_anggaran_id,
+            'name' => $tahun_anggaran->tahun_anggaran_nama,
             'display_name' => $tahun_anggaran->tahun_anggaran_nama,
         ]);
         $admin = Role::where('name', 'admin')->first();

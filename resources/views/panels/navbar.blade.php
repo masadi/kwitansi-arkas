@@ -56,7 +56,7 @@
     </ul>
     <ul class="nav navbar-nav">
       <li class="nav-item d-none d-lg-block">
-        <h2>Nama Sekolah | T.A 2022/2023 Ganjil</h2>
+        <h2>{{session('tahun_anggaran')}}</h2>
       </li>
     </ul>
   </div>
@@ -78,7 +78,9 @@
             @endif
           </span>
           <span class="user-status">
-            Admin
+            @if (Auth::check())
+              {{ Auth::user()->roles->unique()->implode('display_name', ', ') }}
+            @endif
           </span>
         </div>
         <span class="avatar">

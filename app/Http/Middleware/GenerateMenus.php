@@ -37,8 +37,7 @@ class GenerateMenus
             */
         })->filter(function($item) use ($request){
             $user = auth()->user();
-            $semester = $request->session()->get('semester_id');
-            if($user && $user->hasRole( $item->data('role'), $semester)) {
+            if($user && $user->hasRole( $item->data('role'), $user->tahun_anggaran_id)) {
                 return true;
             }
             return false;
