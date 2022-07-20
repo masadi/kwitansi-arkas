@@ -62,8 +62,8 @@ class ReferensiSeeder extends Seeder
         ]);
         $this->command->info('Tahun_anggaran injected');
         $team = Team::updateOrCreate([
-            'name' => $tahun_anggaran->tahun_anggaran_nama,
-            'display_name' => $tahun_anggaran->tahun_anggaran_nama,
+            'name' => $tahun_anggaran->nama,
+            'display_name' => $tahun_anggaran->nama,
         ]);
         $admin = Role::where('name', 'admin')->first();
         $user = User::updateOrCreate([
