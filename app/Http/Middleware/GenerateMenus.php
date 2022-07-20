@@ -20,21 +20,20 @@ class GenerateMenus
         \Menu::make('MyNavBar', function ($menu) use ($text_class, $request){
             $menu->add('Beranda')->data('role', ['admin', 'sekolah'])->append('</span>')->prepend($this->icon('home'))->link->attr($text_class);
             $menu->add('Profile', 'user/profile')->data('role', ['admin', 'sekolah'])->append('</span>')->prepend($this->icon('user'))->link->attr($text_class);
+            $menu->add('Sekolah', 'sekolah')->data('role', ['admin', 'sekolah'])->append('</span>')->prepend($this->icon('book'))->link->attr($text_class);
+            $menu->add('BKU', 'bku')->data('role', ['admin', 'sekolah'])->append('</span>')->prepend($this->icon('dollar-sign'))->link->attr($text_class);
+            /*
             $menu->add('Page Layouts', 'javascript:void(0)')->data('role', ['admin', 'sekolah'])->append('</span>')->prepend($this->icon('mail'))->link->attr($text_class);
             $menu->pageLayouts->add('Collapsed Menu', 'layouts/collapsed-menu')->data('role', ['admin', 'ptk'])->append('</span>')->prepend($this->icon('circle'))->link->attr($text_class);
             $menu->pageLayouts->add('Layout Full', 'layouts/full')->data('role', ['admin', 'sekolah'])->append('</span>')->prepend($this->icon('circle'))->link->attr($text_class);
             $menu->pageLayouts->add('Without Menu', 'layouts/without-menu')->data('role', ['admin', 'sekolah'])->append('</span>')->prepend($this->icon('circle'))->link->attr($text_class);
             $menu->pageLayouts->add('Layout Empty', 'layouts/empty')->data('role', ['admin', 'sekolah'])->append('</span>')->prepend($this->icon('circle'))->link->attr($text_class);
             $menu->pageLayouts->add('Layout Blank', 'layouts/blank')->data('role', ['admin', 'sekolah'])->append('</span>')->prepend($this->icon('circle'))->link->attr($text_class);
+            */
             $menu->add('Keluar Aplikasi', 'logout')->data('role', ['admin', 'sekolah'])->append('</span>')->prepend($this->icon('power'))->link->attr([
                 'class'         => 'd-flex align-items-center text-danger',
                 'onclick'   => 'event.preventDefault(); document.getElementById(\'logout-form\').submit();',
             ]);
-            /*
-            <a class="dropdown-item" href="http://absensi.test/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-power me-50"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg> Logout
-          </a>
-            */
         })->filter(function($item) use ($request){
             $user = auth()->user();
             if($user && $user->hasRole( $item->data('role'), session('tahun_anggaran'))) {
@@ -45,6 +44,7 @@ class GenerateMenus
         return $next($request);
     }
     public function icon($icon){
+        //return '<i class="fa-solid fa-'.$icon.'"></i><span class="menu-title text-truncate">';
         return '<i data-feather="'.$icon.'"></i><span class="menu-title text-truncate">';
     }
 }

@@ -16,24 +16,21 @@ class StaterkitController extends Controller
     }
 
     // Layout collapsed menu
-    public function collapsed_menu()
+    public function sekolah()
     {
-        $pageConfigs = ['sidebarCollapsed' => true];
         $breadcrumbs = [
-            ['link' => "home", 'name' => "Home"], ['link' => "javascript:void(0)", 'name' => "Layouts"], ['name' => "Collapsed menu"]
+            ['link' => "home", 'name' => "Beranda"], ['name' => "Data Sekolah"]
         ];
-        return view('/content/layout-collapsed-menu', ['breadcrumbs' => $breadcrumbs, 'pageConfigs' => $pageConfigs]);
+        return view('/content/sekolah', ['breadcrumbs' => $breadcrumbs]);
     }
 
     // layout boxed
-    public function layout_full()
+    public function bku()
     {
-        $pageConfigs = ['layoutWidth' => 'full'];
-
         $breadcrumbs = [
-            ['link' => "home", 'name' => "Home"], ['name' => "Layouts"], ['name' => "Layout Full"]
+            ['link' => "home", 'name' => "Beranda"], ['name' => "Buku Kas Umum"]
         ];
-        return view('/content/layout-full', ['pageConfigs' => $pageConfigs, 'breadcrumbs' => $breadcrumbs]);
+        return view('/content/bku', ['breadcrumbs' => $breadcrumbs]);
     }
 
     // without menu
