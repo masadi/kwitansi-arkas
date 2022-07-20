@@ -12,10 +12,8 @@ return [
     'truncate_tables' => true,
 
     'roles_structure' => [
-        'administrator' => [],
-        'ptk' => [],
-        'staf' => [],
-        'pd' => []
+        'admin' => [],
+        'sekolah' => [],
     ],
 
     'permissions_map' => [
